@@ -1,8 +1,8 @@
 /*
  * BluetoothJDY23.cpp
  * Library untuk komunikasi Bluetooth menggunakan module JDY-23
- * Author: Ahmad
- * Date: 2024
+ * Author: Ahmad Taufiq
+ * Date: 2025
  */
 
 #include "Bluetooth.h"
