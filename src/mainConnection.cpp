@@ -23,7 +23,14 @@
 // // ===== GLOBAL VARIABLES =====
 // unsigned long lastPing = 0;
 // const unsigned long PING_INTERVAL = 3000; // 3 seconds
-
+// void btSendChunked(const String &s, int chunkSize = 32) {
+//     int len = s.length();
+//     for (int i = 0; i < len; i += chunkSize) {
+//         bt.send(s.substring(i, i + chunkSize));
+//         delay(5); // beri waktu JDY-23
+//     }
+//     bt.println(""); // akhiri baris
+// }
 // // ===== CALLBACK FUNCTION =====
 // // Fungsi ini dipanggil otomatis ketika ada data dari Bluetooth
 // void onBluetoothData(String data) {
@@ -99,8 +106,11 @@
 //     if (millis() - lastPing >= PING_INTERVAL) {
 //         lastPing = millis();
 //         if (bt.isConnected()) {
-//             bt.println("Ping from STM32!");
-//             Serial.println("[PING] Sent to Bluetooth");
+//             bt.println("Diterima");
+//             Serial.println("Mengirim");
 //         }
 //     }
+
+
 // }
+
