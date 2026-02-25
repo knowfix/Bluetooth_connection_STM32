@@ -24,15 +24,16 @@ public:
     // Update status LED dan koneksi
     void update();
     
-    // Kirim data ke Bluetooth
-    void send(String data);
-    void println(String data);
-    
-    // Cek apakah ada data masuk
+    // ===== SEND DATA =====
+    void send(String data);                 // Text (existing)
+    void println(String data);              // Text + newline
+    void send(const uint8_t* data, size_t len); // <<< RAW BINARY (EEG)
+
+    // ===== RECEIVE DATA =====
     bool available();
-    
-    // Baca data dari Bluetooth
     String readString();
+    String readLine(unsigned long timeout = 200);
+
     char read();
     
     // Reset module

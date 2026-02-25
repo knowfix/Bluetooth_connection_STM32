@@ -96,6 +96,27 @@ void BluetoothJDY23::send(String data) {
     _serial->print(data);
 }
 
+// Send RAW binary data (EEG, sensor, etc)
+void BluetoothJDY23::send(const uint8_t* data, size_t len) {
+    if (!_serial) return;
+    _serial->write(data, len);
+}
+
+String BluetoothJDY23::readLine(unsigned long timeout) {
+    String line = "";
+    unsigned long t0 = millis();
+
+    while (millis() - t0 < timeout) {
+        while (_serial->available()) {
+            char c = _serial->read();
+            if (c == '\n') return line;
+            if (c != '\r') line += c;
+        }
+    }
+    return line;
+}
+
+
 void BluetoothJDY23::println(String data) {
     _serial->println(data);
 }
